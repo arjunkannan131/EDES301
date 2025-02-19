@@ -5,7 +5,7 @@ blink_USR3.py
 This script blinks the USR3 LED on the BeagleBone board at a frequency of 5 Hz (5 full on/off cycles per second) 
 using the Adafruit_BBIO library.
 
-Author: [Your Name]
+Author: Arjun Kannan
 Course: EDES301
 License: MIT
 """
