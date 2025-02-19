@@ -4,7 +4,7 @@
 Simple Calculator
 --------------------------------------------------------------------------
 License:   
-Copyright 2025 - <NAME>
+Copyright 2025 - <Your Name>
 
 Redistribution and use in source and binary forms, with or without 
 modification, are permitted provided that the following conditions are met:
@@ -40,10 +40,10 @@ Simple calculator that will
   - Repeat
 
 Operations:
-  - "+" : addition
-  - "-" : subtraction
-  - "*" : multiplication
-  - "/" : division
+  - addition
+  - subtraction
+  - multiplication
+  - division
 
 Error conditions:
   - Invalid operator --> Program should exit
@@ -51,9 +51,7 @@ Error conditions:
 
 --------------------------------------------------------------------------
 """
-
-# NOTE - Add import statements to allow access to Python library functions
-# NOTE - Hint:  Look at  https://docs.python.org/3/library/operator.html
+import operator
 
 # ------------------------------------------------------------------------
 # Constants
@@ -65,62 +63,48 @@ Error conditions:
 # Global variables
 # ------------------------------------------------------------------------
 
-# NOTE - Global variable to map an operator string (e.g. "+") to 
-# NOTE - the appropriate function.
 operators = {
-    # Dictionary syntax:  "key" : "value"
-    #   i.e. "function" : operator.<function>
+    "+" : operator.add,
+    "-" : operator.sub,
+    "*" : operator.mul,
+    "/" : operator.truediv
 }
-
-
 
 # ------------------------------------------------------------------------
 # Functions
 # ------------------------------------------------------------------------
 
 def get_user_input():
-    """ Get input from the user.
-        Returns tuple:  (number, number, function) or 
-                        (None, None, None) if inputs invalid
+    """Get input from the user.
+         Returns tuple: (number, number, function) or 
+         (None, None, None) if the inputs are invalid
     """
-    # NOTE - Use "try"/"except" statements to allow code to handle errors gracefully.      
     try:
-        # NOTE - Use "pass" statements to allow code to be run without having to 
-        # NOTE - fill out the contents.  This pass statement should be removed    
-        pass
-        
-        # NOTE - User input is generally returned as a string and must be translated.
+        number1 = float(input("Enter first number : "))
+        number2 = float(input("Enter second number: "))
+        op      = input("Enter function (valid values are +, -, *, /): ")
+    
+        func    = operators.get(op)
     except:
-        print("Invalid Input")
         return (None, None, None)
+    
+    return (number1, number2, func)
 
 # End def
-
 
 
 # ------------------------------------------------------------------------
 # Main script
 # ------------------------------------------------------------------------
 
-# NOTE - The python variable "__name__" is provided by the language and can 
-# NOTE - be used to determine how the file is being executed.  For example,
-# NOTE - if the program is being executed on the command line:
-# NOTE -   python3 simple_calc.py
-# NOTE - then the "__name__" will be the string:  "__main__".  If the file 
-# NOTE - is being imported into another python file:
-# NOTE -   import simple_calc
-# NOTE - the the "__name__" will be the module name, i.e. the string "simple_calc"
-
 if __name__ == "__main__":
 
-    # NOTE - Need to add main calculator functionality:
-    # NOTE -   - Use a loop construct to repeat the operation
-    # NOTE -   - Get the input from the user (i.e. use function created above)    
-    # NOTE -   - Check that all inputs are valid (exit the program if inputs invalid)
-    # NOTE -   - Execute the function on the numbers and print the results
-
-    # NOTE - Use "pass" statements to allow code to be run without having to 
-    # NOTE - fill out the contents.  This pass statement should be removed    
-    pass
-
+    while True:
+        (num1, num2, func) = get_user_input()
+        
+        if (num1 == None) or (num2 == None) or (func == None):
+            print("Invalid input")
+            break
+        
+        print(func(num1, num2))
 
