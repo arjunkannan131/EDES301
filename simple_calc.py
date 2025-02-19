@@ -1,110 +1,86 @@
 # -*- coding: utf-8 -*-
 """
 --------------------------------------------------------------------------
-Simple Calculator
---------------------------------------------------------------------------
-License:   
-Copyright 2025 - <Your Name>
-
-Redistribution and use in source and binary forms, with or without 
-modification, are permitted provided that the following conditions are met:
-
-1. Redistributions of source code must retain the above copyright notice, 
-this list of conditions and the following disclaimer.
-
-2. Redistributions in binary form must reproduce the above copyright notice, 
-this list of conditions and the following disclaimer in the documentation 
-and/or other materials provided with the distribution.
-
-3. Neither the name of the copyright holder nor the names of its contributors 
-may be used to endorse or promote products derived from this software without 
-specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE 
-LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
-CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
-SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
-INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
-CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF 
-THE POSSIBILITY OF SUCH DAMAGE.
---------------------------------------------------------------------------
-
-Simple calculator that will 
-  - Take in two numbers from the user
-  - Take in an operator from the user
-  - Perform the mathematical operation and provide the number to the user
-  - Repeat
-
-Operations:
-  - addition
-  - subtraction
-  - multiplication
-  - division
-
-Error conditions:
-  - Invalid operator --> Program should exit
-  - Invalid number   --> Program should exit
-
+Enhanced Simple Calculator with Extended Operators and Python 2 Support
 --------------------------------------------------------------------------
 """
+
 import operator
+import sys
 
 # ------------------------------------------------------------------------
-# Constants
-# ------------------------------------------------------------------------
-
-# NOTE - No constants are needed for this example 
-
-# ------------------------------------------------------------------------
-# Global variables
+# Global Variables
 # ------------------------------------------------------------------------
 
 operators = {
-    "+" : operator.add,
-    "-" : operator.sub,
-    "*" : operator.mul,
-    "/" : operator.truediv
+    "+"  : operator.add,
+    "-"  : operator.sub,
+    "*"  : operator.mul,
+    "/"  : operator.truediv,
+    "%"  : operator.mod,
+    "**" : operator.pow,
+    ">>" : operator.rshift,
+    "<<" : operator.lshift
 }
+
+# Detect Python version
+PY2 = sys.version_info[0] == 2
+
+# Use `raw_input()` for Python 2, `input()` for Python 3
+def get_input(prompt):
+    return raw_input(prompt) if PY2 else input(prompt)
 
 # ------------------------------------------------------------------------
 # Functions
 # ------------------------------------------------------------------------
 
 def get_user_input():
-    """Get input from the user.
-         Returns tuple: (number, number, function) or 
-         (None, None, None) if the inputs are invalid
-    """
+    """Get input from the user and return valid numbers and an operator function."""
+    
     try:
-        number1 = float(input("Enter first number : "))
-        number2 = float(input("Enter second number: "))
-        op      = input("Enter function (valid values are +, -, *, /): ")
-    
-        func    = operators.get(op)
-    except:
-        return (None, None, None)
-    
-    return (number1, number2, func)
+        num1 = get_input("Enter first number (or 'q' to quit): ")
+        if num1.lower() == 'q':
+            return None, None, None
+        
+        num2 = get_input("Enter second number: ")
+        if num2.lower() == 'q':
+            return None, None, None
+        
+        # Convert numbers to integers for bitwise operations
+        num1 = int(num1) if ">>" in operators or "<<" in operators else float(num1)
+        num2 = int(num2) if ">>" in operators or "<<" in operators else float(num2)
 
-# End def
+        op = get_input("Enter function (+, -, *, /, %, **, >>, <<) or 'q' to quit: ")
+        if op.lower() == 'q':
+            return None, None, None
 
+        func = operators.get(op)
+        
+        if func is None:
+            print("Invalid operator. Please enter one of: +, -, *, /, %, **, >>, <<")
+            return None, None, None
+
+        if op == "/" and num2 == 0:
+            print("Error: Division by zero is not allowed.")
+            return None, None, None
+
+        return num1, num2, func
+    
+    except ValueError:
+        print("Invalid input. Please enter numeric values.")
+        return None, None, None
 
 # ------------------------------------------------------------------------
-# Main script
+# Main Script
 # ------------------------------------------------------------------------
 
 if __name__ == "__main__":
-
     while True:
-        (num1, num2, func) = get_user_input()
+        num1, num2, func = get_user_input()
         
-        if (num1 == None) or (num2 == None) or (func == None):
-            print("Invalid input")
+        if num1 is None or num2 is None or func is None:
+            print("Exiting program.")
             break
         
-        print(func(num1, num2))
+        print(f"Result: {func(num1, num2)}\n")
 
