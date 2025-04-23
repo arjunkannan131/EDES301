@@ -4,6 +4,8 @@
 
 ---
 
+Hackster.io page: https://www.hackster.io/your-link-here](https://www.hackster.io/ak131/breathesafe-pocket-sized-environmental-monitor-d9377a
+
 ## 🌟 Features
 
 - 🌡️ Real-time temperature and pressure from **BMP280**
@@ -24,8 +26,6 @@
 - SSD1306 128x32 OLED Display (I2C)
 - Breadboard + jumper wires
 - 3.3V power rail
-
-📷 Full schematic and wiring diagram available on the [Hackster.io project page]([https://www.hackster.io/your-link-here](https://www.hackster.io/ak131/breathesafe-pocket-sized-environmental-monitor-d9377a)).
 
 ---
 
