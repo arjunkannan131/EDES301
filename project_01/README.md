@@ -71,13 +71,7 @@ sudo i2cdetect -y -r 1
 
 You should see addresses corresponding to your sensors and OLED display (e.g., 0x3C for the SSD1306 display).
 
-5. Clone the Repository
-Clone your project repository and navigate to the project directory:
-
-git clone https://github.com/arjunkannan131/breathe_safe.git
-cd breathe_safe/project_01
-
-6. Run the Script
+5. Run the Script
 Execute the main Python script:
 
 python3.11 breathesafe.py
