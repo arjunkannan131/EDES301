@@ -1,0 +1,8 @@
+Partlist exported from /Users/arjunkannan/Documents/EAGLE/projects/project_02/etchasketch.sch at 07/05/25 12:21 AM
+
+Qty Value     Device    Package   Parts            Description        MF MPN           OC_FARNELL OC_NEWARK POPULARITY
+1             PN61729   PN61729   X1               BERG USB connector                  unknown    unknown   0         
+2   DG200ACJ  DG200ACJ  DIL14     IC1, IC2         ANALOG SWITCH                       unknown    77C6395   2         
+3   HCMS200X  HCMS200X  HCMS200X  DIS1, DIS2, DIS3 LED DISPLAY                         unknown    unknown   0         
+1   MEGA8-MI  MEGA8-MI  MLF32-TH  IC3              MICROCONTROLLER       ATMEGA88PA-MU 1715491    15R0272   0         
+2   PC16-SHM2 PC16-SHM2 PC16-SHM2 R4, R5           POTENTIOMETER                       unknown    unknown   0         
