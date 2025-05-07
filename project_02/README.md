@@ -1,4 +1,4 @@
-# Etch-a-Sketch PCB – ENGI301 Project 02
+# Etch-a-Sketch PCB – EDES301 Project 02
 
 **Student:** Arjun Kannan  
 **Course:** ENGI/EDES301   
