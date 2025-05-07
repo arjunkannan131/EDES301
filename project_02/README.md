@@ -25,7 +25,7 @@ This project implements a custom Printed Circuit Board (PCB) for a digital "Etch
 The PCB was uploaded to MacroFab for DFM review and quoting. 
 
 **Price Quotes (Unit Volumes):**  
-- 1 Unit: $X.XX  
-- 10 Units: $X.XX  
-- 100 Units: $X.XX  
-- 1000 Units: $X.XX  
+- 1 Unit: $$298.50  
+- 10 Units: $636.57 
+- 100 Units: $1,797.05 
+- 1000 Units: $12,586.26  
