@@ -1,7 +1,7 @@
 # Etch-a-Sketch PCB – ENGI301 Project 02
 
 **Student:** Arjun Kannan  
-**Course:** ENGI301   
+**Course:** ENGI/EDES301   
 **Due Date:** May 6, 2025  
 **Instructor:** Dr. Erik Welsh
 
